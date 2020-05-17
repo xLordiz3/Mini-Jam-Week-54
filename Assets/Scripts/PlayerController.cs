@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
 	private bool m_Grounded;            // Whether or not the player is grounded.
 	const float k_CeilingRadius = .2f; // Radius of the overlap circle to determine if the player can stand up
 	private Rigidbody2D m_Rigidbody2D;
-	private bool m_FacingRight = true;  // For determining which way the player is currently facing.
+	public bool m_FacingRight = true;  // For determining which way the player is currently facing.
 	private Vector3 m_Velocity = Vector3.zero;
 
 	[Header("Events")]
@@ -32,6 +32,17 @@ public class PlayerController : MonoBehaviour
 	public BoolEvent OnCrouchEvent;
 	private bool m_wasCrouching = false;
 
+	public int health = 3;
+
+	public int GetHealth()
+	{
+		return health;
+	}
+
+	public void TakeDamage()
+	{
+		health -= 1;
+	}
 	private void Awake()
 	{
 		m_Rigidbody2D = GetComponent<Rigidbody2D>();

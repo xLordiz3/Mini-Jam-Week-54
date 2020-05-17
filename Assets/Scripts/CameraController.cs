@@ -23,8 +23,16 @@ public class CameraController : MonoBehaviour
         Vector3 posNoZ = transform.position;
         posNoZ.z = target.transform.position.z;
         Vector3 tD = (target.transform.position - posNoZ);
-        iV = tD.magnitude * 5f;
+        iV = tD.magnitude * 3f;
         tP = transform.position + (tD.normalized * iV * Time.deltaTime);
+        if(Input.GetAxisRaw("Horizontal") == -1)
+        {
+            offset = new Vector3(-0.3f, 0.05f, 0f);
+        }
+        else
+        {
+            offset = new Vector3(0.25f, 0.05f, 0f);            
+        }
         transform.position = Vector3.Lerp(transform.position, tP + offset, 0.25f);
     }
 }
